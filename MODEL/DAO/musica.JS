@@ -5,8 +5,14 @@
  * Versão:   1.0
 ************************************************************************************************/
 
+//Import da bivlioteca do prisma cliente para realizar as ações no BD
+const { PrismaClient } = require ('@prisma/client')
+
 //Função para inserir uma nova música
 const insertMusica = async function(musica){
+    //Instância da classe do prisma Client
+    const  prisma = new PrismaClient()
+
         let sql = `insert into tbl_musica ( nome,
                                             duracao, 
                                             data_lancamento, 
@@ -18,6 +24,9 @@ const insertMusica = async function(musica){
                                     ${musica.letra},
                                     ${musica.link}
                             )`
+
+                          
+    let result = await prisma.$executeRawnUnsafe
 }
 
 //Função para atualizar uma música existente

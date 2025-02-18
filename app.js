@@ -17,7 +17,8 @@ const express = require('express');
 const cors =  require('cors');
 const bodyParser = require('body-parser');
 
-
+//Cria um objeto para o body do tipo JSON
+const bodyParserjson = bodyParser.json()
 
 const app = express()
 
@@ -30,36 +31,4 @@ app.use((request, response, next) => {
     next()
 })
 
-app.post('/v1/controle-musicas/musica', cors(), async (req, res) => {
-    const musica = req.body;
-    const result = await musicaController.inserirMusica(musica);
-    res.status(result.status_code).json(result);
-});
-
-// Rota para atualizar uma música existente
-app.put('/v1/musicas/:id', async (req, res) => {
-    const id = req.params.id;
-    const musica = req.body;
-    const result = await musicaController.atualizarMusica(id, musica);
-    res.status(result.status_code).json(result);
-});
-
-// Rota para excluir uma música
-app.delete('/v1/musicas/:id', async (req, res) => {
-    const id = req.params.id;
-    const result = await musicaController.excluirMusica(id);
-    res.status(result.status_code).json(result);
-});
-
-// Rota para listar todas as músicas
-app.get('/v1/musicas', async (req, res) => {
-    const result = await musicaController.listarMusica();
-    res.json(result);
-});
-
-// Rota para buscar uma música pelo ID
-app.get('/v1/musicas/:id', async (req, res) => {
-    const id = req.params.id;
-    const result = await musicaController.buscarMusica(id);
-    res.status(result.status_code).json(result);
-});
+app.post('/v1/controle-musicas/musica', cors(), bodyParserjson, asyn function(request,response) )

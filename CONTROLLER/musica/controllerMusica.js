@@ -6,6 +6,9 @@
  * Versão:   1.0
 *****************************************************************************************/
 
+//Import do arquivo de mensagens e status code
+const message = require('../../modulo/config.js')
+
 //função para inserir uma nova música
 const inserirMusica = async function () {
     
@@ -17,7 +20,7 @@ const inserirMusica = async function () {
 
     )
     {
-        return {}
+        return message.ERROR_REQUIRED_FIELDS
     }
 
 }

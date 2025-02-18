@@ -26,7 +26,9 @@ const insertMusica = async function(musica){
                             )`
 
 
- //Tem que colocar o async se não o AWAIT não funciona. / // Executa o script SQL no banco de dados e guarda o resultado (true or false).
+ //Tem que colocar o async se não o AWAIT não funciona. / 
+ // 
+ // Executa o script SQL no banco de dados e guarda o resultado (true or false).
     let result = await prisma.$executeRawnUnsafe(sql)
 
  if(result)

@@ -8,6 +8,7 @@
 
 //Import do arquivo de mensagens e status code
 const message = require('../../modulo/config.js')
+const musicaDAO = require('../../model/DAO/musica.js')
 
 //função para inserir uma nova música
 const inserirMusica = async function () {
@@ -20,7 +21,15 @@ const inserirMusica = async function () {
 
     )
     {
-        return message.ERROR_REQUIRED_FIELDS
+        return message.ERROR_REQUIRED_FIELDS //Status code 400
+    }else{
+        //encaminhando os dados da musica para o DAO realizar o insert no BD
+        let resultMusica = await musicaDAO.insertMusica(musica) 
+
+        if(resultMusica)
+            return message.SUCESS_CREATED_ITEM //Status code 201
+        else
+        return message.ERROR_INTERNAL_SERVER  //Status code 500
     }
 
 }
@@ -41,6 +50,14 @@ const listarMusica = async function () {
 }
 
 //função para retornar uma música pelo ID
-const bucarMusica = async function () {
+const buscarMusica = async function () {
     
+}
+
+module.exports = {
+    inserirMusica,
+    atualizarMusica,
+    excluirMusica,
+    listarMusica,
+    buscarMusica
 }
